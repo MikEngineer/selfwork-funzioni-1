@@ -9,28 +9,37 @@
 // TIPS:
 // Usiamo questa formula per generare un numero random → Math.floor(Math.random() * (6 - 1 + 1) + 1);
 
-let punteggioMiki = 0;
-let punteggioAle = 0;
-let numTiri = Number(prompt("Inserisci il numero di tiri da effettuare con il dado:"));
 
 
-function tiraIlDado (nome){
-    for (let i = 1; i <= numTiri; i++){
-
-        punteggioMiki += Math.floor(Math.random() * (6 - 1 + 1) + 1);
-        punteggioAle += Math.floor(Math.random() * (6 - 1 + 1) + 1);
+function tiraIlDado(numTiri) {
+    let punteggioMiki = 0;
+    let punteggioAle = 0;
+    
+    for (let i = 0; i <= numTiri; i++){
+        tiroMiki = Math.floor(Math.random() * (6 - 1 + 1) + 1);
+        tiroAle = Math.floor(Math.random() * (6 - 1 + 1) + 1);
         
-        if(punteggioMiki < punteggioAle) {
-            console.log(`Questo è il punteggio di ${nome}, vincitore della sfida: ${punteggioAle}`);
-        }else if(punteggioMiki > punteggioAle) {
-            console.log(`Questo è il punteggio di ${nome}, vincitore della sfida: ${punteggioMiki}`);
-            
-        }else {
-            console.log("La sfida è finita in pareggio");
-        }
+        punteggioMiki += tiroMiki;
+        punteggioAle += tiroAle;
+        
+    }
+
+    if(punteggioMiki < punteggioAle) {
+        return `Questo è il punteggio di Ale, vincitore della sfida: ${punteggioAle}.`;
+    }else if(punteggioMiki > punteggioAle) {
+        return `Questo è il punteggio di Miki, vincitore della sfida: ${punteggioMiki}.`;
+        
+    }else {
+        return `La sfida è finita in pareggio perché entrambi i giocatori hanno ottenuto ${punteggioMiki}.`;
     }
     
 }
 
-tiraIlDado ("Miki");
-tiraIlDado ("Ale");
+let numTiri = Number(prompt("Inserisci il numero di tiri da effettuare con il dado:"));
+
+
+// let risultato = tiraIlDado(numTiri);
+// console.log(risultato);
+
+console.log(tiraIlDado(numTiri));
+
